@@ -5,14 +5,11 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Jan  5 18:07:00 2016 Baptiste veyssiere
-** Last update Thu Mar 10 18:54:59 2016 Baptiste veyssiere
+** Last update Tue Mar 29 16:30:00 2016 Baptiste veyssiere
 */
 
 #ifndef GET_NEXT_LINE_H_
 # define GET_NEXT_LINE_H_
-
-# include <unistd.h>
-# include <stdlib.h>
 
 # ifndef READ_SIZE
 #  define READ_SIZE (14)

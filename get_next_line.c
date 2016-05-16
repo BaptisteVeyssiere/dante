@@ -5,10 +5,19 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Mon Jan 11 16:30:41 2016 Baptiste veyssiere
-** Last update Thu Mar 10 18:55:56 2016 Baptiste veyssiere
+** Last update Sun Apr 10 02:40:08 2016 Baptiste veyssiere
 */
 
+#include <unistd.h>
+#include <stdlib.h>
 #include "get_next_line.h"
+
+void	read_loop_bis(int *j, int *end, char *reader)
+{
+  while (++(*j) < READ_SIZE && *end == 0 && reader[*j] != 0)
+    if (reader[*j] == '\n')
+      *end = 1;
+}
 
 char	*my_realloc(char *ptr, int size)
 {
@@ -30,15 +39,6 @@ char	*my_realloc(char *ptr, int size)
   ptr = NULL;
   ptr = tmp;
   return (ptr);
-}
-
-int	my_strlen(char *s)
-{
-  int	i;
-
-  i = -1;
-  while (s[++i] != 0);
-  return (i);
 }
 
 char	*init(char *buffer, char *line, int *static_counter, int *line_index)
@@ -89,10 +89,10 @@ char	*read_loop(char *line, int fd, int line_index, char *buffer)
 	line[++line_index] = reader[i];
       if ((j = -1) == -1 && end == 0 && reader[i] == 0)
 	if ((line = my_realloc(line, (my_strlen(line) + READ_SIZE))) == NULL)
-	    return (NULL);
-      if (reader[i] == '\n' && READ_SIZE > 1 && (--i == i));
-      while (++j < READ_SIZE && end == 0 && reader[j] != 0)
-	if (reader[j] == '\n' && (end = 1) == 1);
+	  return (NULL);
+      if (reader[i] == '\n' && READ_SIZE > 1)
+	--i;
+      read_loop_bis(&j, &end, reader);
     }
   while (++i < READ_SIZE)
     buffer[++j] = reader[i];
@@ -105,7 +105,6 @@ char		*get_next_line(const int fd)
   static char	buffer[READ_SIZE + 1] = {0};
   static int	static_counter = 0;
   int		line_index;
-  int		i;
 
   line = NULL;
   line_index = -1;
