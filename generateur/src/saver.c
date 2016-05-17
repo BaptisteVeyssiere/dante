@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Apr 27 16:58:41 2016 Baptiste veyssiere
-** Last update Thu Apr 28 23:57:19 2016 Baptiste veyssiere
+** Last update Tue May 17 16:12:36 2016 Baptiste veyssiere
 */
 
 #include <unistd.h>
@@ -21,7 +21,7 @@ int		saver(t_cell ***maze)
   int		i;
   int		j;
 
-  file = "perfect_maze.map";
+  file = "maze";
   mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
   if ((fd = open(file, O_CREAT | O_TRUNC | O_WRONLY, mode)) == -1)
     return (my_put_error("Error while using open function\n", -1));
