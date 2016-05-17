@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Apr 27 16:11:08 2016 Baptiste veyssiere
-** Last update Thu Apr 28 23:56:33 2016 Baptiste veyssiere
+** Last update Tue May 17 15:45:02 2016 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -48,10 +48,12 @@ int	check_if_nbr(char *nbr)
   return (0);
 }
 
-int		perfect_maze(char *width, char  *height)
+int		perfect_maze(char *width, char *height, char *perfect)
 {
   t_dimension	*dimension;
+  char		perfect_check;
 
+  perfect_check = 0;
   if ((dimension = malloc(sizeof(t_dimension))) == NULL)
     return (my_put_error("Error while using malloc function\n", -1));
   if (check_if_nbr(width))
@@ -64,7 +66,12 @@ int		perfect_maze(char *width, char  *height)
     return (my_put_error("Invalid negative width\n", 1));
   if (dimension->height < 1)
     return (my_put_error("Invalid negative height\n", 1));
-  if (perfect_maze_generator(dimension))
+  if (perfect != NULL && !my_strcmp(perfect, "parfait"))
+    return (my_put_error("Invalid third argument\n", 1));
+  else if (perfect != NULL)
+    ++perfect_check;
+  if ((!perfect && perfect_maze_generator(dimension, 0)) ||
+      (perfect && perfect_maze_generator(dimension, 1)))
     return (-1);
   free(dimension);
   return (0);
@@ -74,9 +81,11 @@ int	main(int ac, char **av)
 {
   int	error;
 
-  if (ac != 3)
+  if (ac < 3 || ac > 4)
     return (my_put_error("./maze width height\n", -1));
-  if ((error = perfect_maze(av[1], av[2])))
+  if (ac == 3 && (error = perfect_maze(av[1], av[2], NULL)))
+    return (error);
+  else if (ac == 4 && (error = perfect_maze(av[1], av[2], av[3])))
     return (error);
   return (0);
 }

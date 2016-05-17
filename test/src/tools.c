@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Apr 27 16:18:16 2016 Baptiste veyssiere
-** Last update Wed Apr 27 16:27:08 2016 Baptiste veyssiere
+** Last update Tue May 17 15:46:06 2016 Baptiste veyssiere
 */
 
 #include <unistd.h>
@@ -24,4 +24,17 @@ int	my_put_error(char *msg, int error)
   if (write(2, msg, my_strlen(msg)) == -1)
     return (-1);
   return (error);
+}
+
+int	my_strcmp(char *s1, char *s2)
+{
+  int	i;
+
+  i = -1;
+  while (s1[++i] && s2[i])
+    if (s1[i] != s2[i])
+      return (0);
+  if (s1[i] || s2[i])
+    return (0);
+  return (1);
 }
