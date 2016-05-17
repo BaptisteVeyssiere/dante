@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Apr 27 16:16:59 2016 Baptiste veyssiere
-** Last update Fri Apr 29 14:40:21 2016 Baptiste veyssiere
+** Last update Tue May 17 15:47:38 2016 Baptiste veyssiere
 */
 
 #ifndef PERFECT_MAZE_H_
@@ -35,11 +35,12 @@ typedef struct
 */
 int	my_put_error(char*, int);
 int	my_strlen(char*);
+int	my_strcmp(char*, char*);
 
 /*
 ** perfect_maze_generator_init.c
 */
-int	perfect_maze_generator(t_dimension*);
+int	perfect_maze_generator(t_dimension*, char);
 
 /*
 ** check_nbr_of_way.c
