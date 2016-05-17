@@ -5,12 +5,9 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 19:25:19 2016 Nathan Scutari
-** Last update Tue May 17 16:04:41 2016 Nathan Scutari
+** Last update Tue May 17 16:07:16 2016 Nathan Scutari
 */
 
-#define _BSD_SOURCE
-#include <unistd.h>
-#include <stdlib.h>
 #include "dante.h"
 
 void	prep_pos(t_pos *pos, int x, int y)
@@ -25,30 +22,12 @@ void	prep_pos(t_pos *pos, int x, int y)
   pos[3].y = y;
 }
 
-void	print_map(char **map)
-{
-  int	y;
-  int	x;
-
-  y = -1;
-  system("clear");
-  while (map[++y])
-    {
-      x = -1;
-      while (map[y][++x])
-	write(1, &map[y][x], 1);
-      write(1, "\n", 1);
-    }
-  usleep(20000);
-}
-
 int	path_finder(int x, int y, t_pos *pos, char **map)
 {
   int	i;
   t_pos	n_pos[4];
 
   map[y][x] = 'o';
-  print_map(map);
   if (pos->x == x && pos->y == y)
     return (0);
   prep_pos(n_pos, x, y);
@@ -63,6 +42,5 @@ int	path_finder(int x, int y, t_pos *pos, char **map)
 	}
     }
   map[y][x] = '*';
-  print_map(map);
   return (1);
 }
