@@ -5,15 +5,12 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:26:00 2016 Nathan Scutari
-** Last update Wed May 18 15:27:44 2016 Nathan Scutari
+** Last update Wed May 18 17:48:00 2016 Nathan Scutari
 */
 
-#define _BSD_SOURCE
 #include <sys/stat.h>
-#include <time.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <fcntl.h>
 #include "dante.h"
 
@@ -53,7 +50,7 @@ t_layer	*prep_layer(t_tree *tree, char **map)
     return (NULL);
   if (map[0][0] != '*')
     return (NULL);
-  map[0][0] = 'k';
+  map[0][0] = 'o';
   layer->node = tree;
   layer->next = NULL;
   return (layer);
@@ -64,7 +61,6 @@ void	print_tree(t_tree *tree)
   int	i;
 
   i = -1;
-  printf("%d - %d\n", tree->pos.x, tree->pos.y);
   while (tree->next && tree->next[++i])
     print_tree(tree->next[i]);
 }

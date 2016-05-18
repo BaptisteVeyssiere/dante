@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 19:25:19 2016 Nathan Scutari
-** Last update Wed May 18 15:28:11 2016 Nathan Scutari
+** Last update Wed May 18 19:29:35 2016 Nathan Scutari
 */
 
 #include "dante.h"
@@ -34,7 +34,7 @@ int	path_finder(int x, int y, t_pos *pos, char **map)
   i = -1;
   while (++i < 4)
     {
-      if (map[n_pos[i].y] && n_pos[i].x >= 0 && n_pos[i].y >= 0 &&
+      if (n_pos[i].x >= 0 && n_pos[i].y >= 0 && map[n_pos[i].y] &&
 	  map[n_pos[i].y][n_pos[i].x] == '*')
 	{
 	  if (path_finder(n_pos[i].x, n_pos[i].y, pos, map) == 0)

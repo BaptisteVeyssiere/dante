@@ -5,12 +5,11 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:26:00 2016 Nathan Scutari
-** Last update Wed May 18 15:28:36 2016 Nathan Scutari
+** Last update Wed May 18 17:34:30 2016 Nathan Scutari
 */
 
-#define _BSD_SOURCE
+
 #include <sys/stat.h>
-#include <time.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -47,9 +46,20 @@ void	print_map(char **map)
     }
 }
 
+void	free_wordtab(char **map)
+{
+  int	y;
+
+  y = -1;
+  while (map[++y])
+    free(map[y]);
+  free(map);
+}
+
 int	prof_solver(char *file_name)
 {
   t_pos		pos;
+  t_pos		posend[2];
   t_node	*node;
   char		**map;
   int		fd;
@@ -60,11 +70,14 @@ int	prof_solver(char *file_name)
     return (perr("The map is incorrect\n"));
   pos.x = my_strlen(map[0]) - 1;
   pos.y = my_wordtablen(map) - 1;
+  posend[1].x = pos.x;
+  posend[1].y = pos.y;
   if ((node = prep_node(pos.x, pos.y)) == NULL)
     return (1);
-  if (path_finder(node, &pos, map))
-    return (perr("Can not find a path\n"));
+  if (path_finder(node, map, posend, NULL))
+    return (1);
   print_map(map);
+  free_wordtab(map);
   return (0);
 }
 

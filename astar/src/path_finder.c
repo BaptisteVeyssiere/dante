@@ -5,14 +5,14 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 19:25:19 2016 Nathan Scutari
-** Last update Wed May 18 15:28:48 2016 Nathan Scutari
+** Last update Wed May 18 17:31:46 2016 Nathan Scutari
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include "dante.h"
 
-void		remove_from_list(t_node **list, t_node *elem)
+void		remove_from_list(t_node **list, t_node *elem, t_node **close)
 {
   t_node	*previous;
   t_node	*open;
@@ -27,13 +27,19 @@ void		remove_from_list(t_node **list, t_node *elem)
 	    *list = open->next;
 	  else
 	    previous->next = open->next;
+	  if ((*close))
+	    open->next = *close;
+	  else
+	    open->next = NULL;
+	  *close = open;
+	  return ;
 	}
       previous = open;
       open = open->next;
     }
 }
 
-t_node	*chose_current(t_node **list)
+t_node	*chose_current(t_node **list, char **map, t_node **close)
 {
   int		min;
   t_node	*open;
@@ -51,7 +57,8 @@ t_node	*chose_current(t_node **list)
 	}
       open = open->next;
     }
-  remove_from_list(list, shorter);
+  remove_from_list(list, shorter, close);
+  map[shorter->pos.y][shorter->pos.x] = 'o';
   return (shorter);
 }
 
@@ -108,10 +115,23 @@ int	add_to_list(t_node **open, t_node *current, t_pos *pos)
   return (0);
 }
 
-int	way_back(t_node *list, char **map)
+void	free_list(t_node *list)
 {
-  int	x;
-  int	y;
+  t_node *tmp;
+
+  while (list)
+    {
+      tmp = list;
+      list = list->next;
+      free(tmp);
+    }
+}
+
+int		way_back(t_node *list, char **map, t_node *close)
+{
+  int		x;
+  int		y;
+  t_node	*tmp;
 
   y = -1;
   while (map[++y])
@@ -121,46 +141,41 @@ int	way_back(t_node *list, char **map)
 	if (map[y][x] == 'o')
 	  map[y][x] = '*';
     }
+  tmp = list;
   while (list != NULL)
     {
       map[list->pos.y][list->pos.x] = 'o';
       list = list->previous;
     }
+  free_list(tmp);
+  free_list(close);
   return (0);
 }
 
-int	path_finder(t_node *open, t_pos *end, char **map)
+int	path_finder(t_node *open, char **map, t_pos *pos, t_node *close)
 {
   int		i;
-  t_pos		pos[2];
   t_pos		n_pos[4];
   t_node	*compare;
   t_node	*current;
 
   prep_pos(n_pos);
-  pos[1].x = end->x;
-  pos[1].y = end->y;
-  while (open != NULL)
+  while (open != NULL && (i = -1))
     {
-      i = -1;
-      current = chose_current(&open);
-      map[current->pos.y][current->pos.x] = 'o';
+      current = chose_current(&open, map, &close);
       while (++i < 4)
-	{
-	  if (POSX >= 0 && POSY >= 0 && map[POSY] &&
-	      map[POSY][POSX] == '*')
-	    {
-	      pos[0].x = POSX;
-	      pos[0].y = POSY;
-	      if ((compare = in_the_list(open, POSX, POSY)))
-		compare_value(current, compare);
-	      else
-		if (add_to_list(&open, current, pos))
-		  return (1);
-	      if (POSX == pos[1].x && POSY == pos[1].y)
-		return (way_back(open, map));
-	    }
-	}
+	if (POSX >= 0 && POSY >= 0 && map[POSY] && map[POSY][POSX] == '*')
+	  {
+	    pos[0].x = POSX;
+	    pos[0].y = POSY;
+	    if ((compare = in_the_list(open, POSX, POSY)))
+	      compare_value(current, compare);
+	    else
+	      if (add_to_list(&open, current, pos))
+		return (1);
+	    if (POSX == pos[1].x && POSY == pos[1].y)
+	      return (way_back(open, map, close));
+	  }
     }
   return (perr("Could not find a path\n"));
 }

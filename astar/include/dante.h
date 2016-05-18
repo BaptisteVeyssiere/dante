@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 18:08:24 2016 Nathan Scutari
-** Last update Wed May 18 15:08:37 2016 Nathan Scutari
+** Last update Wed May 18 17:27:32 2016 Nathan Scutari
 */
 
 #ifndef DANTE_H_
@@ -51,6 +51,6 @@ int	perr(char *);
 /*
 ** path_finder.c
 */
-int	path_finder(t_node *, t_pos *, char **);
+int	path_finder(t_node *, char **, t_pos *, t_node *);
 
 #endif /* !DANTE_H */
