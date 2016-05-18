@@ -5,7 +5,7 @@
 ## Login   <scutar_n@epitech.net>
 ## 
 ## Started on  Mon May 16 18:09:02 2016 Nathan Scutari
-## Last update Tue May 17 16:00:35 2016 Nathan Scutari
+## Last update Tue May 17 17:46:40 2016 Nathan Scutari
 ##
 
 NAME	= solver
@@ -19,7 +19,7 @@ SRCS	= src/main.c \
 
 OBJS	= $(SRCS:.c=.o)
 
-CFLAGS	= -W -Wall -Wextra -Werror -ansi -pedantic -Iinclude/
+CFLAGS	= -W -Wall -Wextra -Werror -ansi -pedantic -Iinclude/ -g
 
 
 $(NAME): $(OBJS)

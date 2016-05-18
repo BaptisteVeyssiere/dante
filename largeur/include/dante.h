@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 18:08:24 2016 Nathan Scutari
-** Last update Tue May 17 16:02:02 2016 Nathan Scutari
+** Last update Wed May 18 12:22:45 2016 Nathan Scutari
 */
 
 #ifndef DANTE_H_
@@ -16,6 +16,19 @@ typedef struct	s_pos
   int		x;
   int		y;
 }		t_pos;
+
+typedef struct	s_tree
+{
+  t_pos		pos;
+  struct s_tree	*previous;
+  struct s_tree	**next;
+}		t_tree;
+
+typedef struct		s_layer
+{
+  t_tree		*node;
+  struct s_layer	*next;
+}			t_layer;
 
 /*
 ** tools.c
@@ -28,6 +41,7 @@ int	my_wordtablen(char **);
 */
 char	**realloc_map(char *, char **);
 char	**get_map(int);
+void	print_map(char **);
 
 /*
 ** error.c
@@ -37,7 +51,7 @@ int	perr(char *);
 /*
 ** path_finder.c
 */
-int	path_finder(int, int, t_pos *, char **);
+int	path_finder(t_tree *, t_layer *, t_pos *, char **);
 void	prep_pos(t_pos *, int, int);
 
 #endif /* !DANTE_H */
