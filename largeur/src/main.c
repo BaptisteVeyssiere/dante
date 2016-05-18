@@ -5,13 +5,13 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:26:00 2016 Nathan Scutari
-** Last update Wed May 18 12:25:52 2016 Nathan Scutari
+** Last update Wed May 18 15:27:44 2016 Nathan Scutari
 */
 
 #define _BSD_SOURCE
 #include <sys/stat.h>
-#include <unistd.h>
 #include <time.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
@@ -23,7 +23,6 @@ void	print_map(char **map)
   int	y;
 
   y = -1;
-  system("clear");
   while (map[++y])
     {
       x = -1;
@@ -31,7 +30,6 @@ void	print_map(char **map)
 	write(1, &map[y][x], 1);
       write(1, "\n", 1);
     }
-  usleep(100000);
 }
 
 t_tree	*prep_tree(void)
@@ -111,7 +109,7 @@ int	prof_solver(char *file_name)
       (layer = prep_layer(tree, map)) == NULL)
     return (1);
   if (path_finder(tree, layer, &pos, map))
-    perr("Can not find a path\n");
+    return (perr("Can not find a path\n"));
   print_map(map);
   free_tree(tree);
   free_map(map);

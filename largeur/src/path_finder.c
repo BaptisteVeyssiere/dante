@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Tue May 17 16:34:42 2016 Nathan Scutari
-** Last update Wed May 18 12:34:09 2016 Nathan Scutari
+** Last update Wed May 18 15:27:35 2016 Nathan Scutari
 */
 
 #include <unistd.h>
@@ -144,7 +144,6 @@ int	path_finder(t_tree *tree, t_layer *layer,
 
   n_layer = NULL;
   save = layer;
-  print_map(map);
   while (layer != NULL)
     {
       if (layer->node->pos.x == end->x && layer->node->pos.y == end->y)
