@@ -1,21 +1,21 @@
 ##
 ## Makefile for solver in /home/scutar_n/rendu/dante/profondeur
-## 
+##
 ## Made by Nathan Scutari
 ## Login   <scutar_n@epitech.net>
-## 
+##
 ## Started on  Mon May 16 18:09:02 2016 Nathan Scutari
-## Last update Tue May 17 16:00:35 2016 Nathan Scutari
+## Last update Sun May 22 19:15:03 2016 Baptiste veyssiere
 ##
 
 NAME	= solver
 
 SRCS	= src/main.c \
-	  src/get_next_line.c \
-	  src/get_map.c \
-	  src/error.c \
-	  src/path_finder.c \
-	  src/tools.c
+	src/get_next_line.c \
+	src/get_map.c \
+	src/error.c \
+	src/path_finder.c \
+	src/tools.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -32,3 +32,5 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+
+re: fclean all

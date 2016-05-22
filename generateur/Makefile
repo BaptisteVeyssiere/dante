@@ -5,36 +5,36 @@
 ## Login   <VEYSSI_B@epitech.net>
 ##
 ## Started on  Wed Apr 27 16:13:50 2016 Baptiste veyssiere
-## Last update Sun May  1 17:43:54 2016 Baptiste veyssiere
+## Last update Sun May 22 19:14:35 2016 Baptiste veyssiere
 ##
 
-NAME	=	generateur
+NAME	= generateur
 
-SRCS	=	src/tools.c				\
-		src/main.c				\
-		src/perfect_maze_generator_init.c	\
-		src/perfect_maze_generator.c		\
-		src/check_nbr_of_way.c			\
-		src/free_maze.c				\
-		src/saver.c
+SRCS	= src/tools.c \
+	src/main.c \
+	src/perfect_maze_generator_init.c \
+	src/perfect_maze_generator.c \
+	src/check_nbr_of_way.c \
+	src/free_maze.c	\
+	src/saver.c
 
-OBJS	=	$(SRCS:.c=.o)
+OBJS	= $(SRCS:.c=.o)
 
-RM	=	rm -f
+RM	= rm -f
 
-CC	=	gcc
+CC	= gcc
 
-CFLAGS	=	-W -Wall -Wextra -Werror -ansi -pedantic -I./include
+CFLAGS	= -W -Wall -Wextra -Werror -ansi -pedantic -I./include
 
-$(NAME):	$(OBJS)
-		$(CC) -o $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	$(CC) -o $(NAME) $(OBJS)
 
-all:		$(NAME)
+all: $(NAME)
 
 clean:
-		$(RM) $(OBJS)
+	$(RM) $(OBJS)
 
-fclean:		clean
-		$(RM) $(NAME)
+fclean: clean
+	$(RM) $(NAME)
 
-re:		fclean all
+re: fclean all
