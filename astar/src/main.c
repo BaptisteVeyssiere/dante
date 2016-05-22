@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:26:00 2016 Nathan Scutari
-** Last update Wed May 18 17:34:30 2016 Nathan Scutari
+** Last update Sun May 22 17:51:58 2016 Baptiste veyssiere
 */
 
 
@@ -67,7 +67,7 @@ int	prof_solver(char *file_name)
   if ((fd = open(file_name, O_RDONLY)) == -1)
     return (perr("Error while trying to open the file\n"));
   if ((map = get_map(fd)) == 0)
-    return (perr("The map is incorrect\n"));
+    return (perr("No solution found\n"));
   pos.x = my_strlen(map[0]) - 1;
   pos.y = my_wordtablen(map) - 1;
   posend[1].x = pos.x;
