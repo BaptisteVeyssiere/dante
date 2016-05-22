@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:26:00 2016 Nathan Scutari
-** Last update Wed May 18 19:30:34 2016 Nathan Scutari
+** Last update Sun May 22 19:41:01 2016 Nathan Scutari
 */
 
 #include <sys/stat.h>
@@ -52,7 +52,11 @@ int	prof_solver(char *file_name)
   pos.x = my_strlen(map[0]) - 1;
   pos.y = my_wordtablen(map) - 1;
   if (path_finder(0, 0, &pos, map))
-    return (perr("Can not find a path\n"));
+    {
+      free_wordtab(map);
+      write(1, "No solution found\n", 18);
+      return (0);
+    }
   print_map(map);
   free_wordtab(map);
   return (0);

@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:53:46 2016 Nathan Scutari
-** Last update Mon May 16 19:01:09 2016 Nathan Scutari
+** Last update Sun May 22 19:01:37 2016 Nathan Scutari
 */
 
 #include <stdlib.h>
@@ -13,7 +13,7 @@
 #include "dante.h"
 #include "get_next_line.h"
 
-char	**realloc_map(char *line, char **map)
+static char	**realloc_map(char *line, char **map)
 {
   int	i;
   char	**new_map;
@@ -32,7 +32,7 @@ char	**realloc_map(char *line, char **map)
   return (new_map);
 }
 
-int	verify_map(char	**map)
+static int	verify_map(char	**map)
 {
   int	i;
   int	x;

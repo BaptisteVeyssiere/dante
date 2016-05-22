@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 18:08:24 2016 Nathan Scutari
-** Last update Wed May 18 12:22:45 2016 Nathan Scutari
+** Last update Sun May 22 19:33:03 2016 Nathan Scutari
 */
 
 #ifndef DANTE_H_
@@ -39,7 +39,6 @@ int	my_wordtablen(char **);
 /*
 ** get_map.c
 */
-char	**realloc_map(char *, char **);
 char	**get_map(int);
 void	print_map(char **);
 
@@ -52,6 +51,19 @@ int	perr(char *);
 ** path_finder.c
 */
 int	path_finder(t_tree *, t_layer *, t_pos *, char **);
-void	prep_pos(t_pos *, int, int);
+
+/*
+** prep_n_free.c
+*/
+void	free_tree(t_tree *);
+void	free_map(char **);
+t_layer	*prep_layer(t_tree *, char **);
+t_tree	*prep_tree(void);
+
+/*
+** end.c
+*/
+void	free_layer(t_layer *);
+int	finish_him(char **, t_tree *, t_layer *);
 
 #endif /* !DANTE_H */

@@ -5,12 +5,12 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 19:25:19 2016 Nathan Scutari
-** Last update Wed May 18 19:29:35 2016 Nathan Scutari
+** Last update Sun May 22 19:04:10 2016 Nathan Scutari
 */
 
 #include "dante.h"
 
-void	prep_pos(t_pos *pos, int x, int y)
+static void	prep_pos(t_pos *pos, int x, int y)
 {
   pos[0].x = x + 1;
   pos[0].y = y;

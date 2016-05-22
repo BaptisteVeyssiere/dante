@@ -5,14 +5,16 @@
 ## Login   <scutar_n@epitech.net>
 ## 
 ## Started on  Mon May 16 18:09:02 2016 Nathan Scutari
-## Last update Tue May 17 17:46:40 2016 Nathan Scutari
+## Last update Sun May 22 19:30:58 2016 Nathan Scutari
 ##
 
 NAME	= solver
 
 SRCS	= src/main.c \
 	  src/get_next_line.c \
+	  src/prep_n_free.c \
 	  src/get_map.c \
+	  src/end.c \
 	  src/error.c \
 	  src/path_finder.c \
 	  src/tools.c

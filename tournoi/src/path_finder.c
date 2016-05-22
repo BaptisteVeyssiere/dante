@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Tue May 17 16:34:42 2016 Nathan Scutari
-** Last update Wed May 18 17:48:25 2016 Nathan Scutari
+** Last update Sun May 22 19:32:05 2016 Nathan Scutari
 */
 
 #include <unistd.h>
@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include "dante.h"
 
-void	prep_pos(t_pos *pos, int x, int y)
+static void	prep_pos(t_pos *pos, int x, int y)
 {
   pos[0].x = x + 1;
   pos[0].y = y;
@@ -25,9 +25,8 @@ void	prep_pos(t_pos *pos, int x, int y)
   pos[3].y = y;
 }
 
-int	add_in_tree(t_tree *old, t_tree *tree)
+static int	add_in_tree(t_tree *old, t_tree *tree, int length)
 {
-  int		length;
   t_tree	**next;
 
   if (!old->next)
@@ -39,7 +38,6 @@ int	add_in_tree(t_tree *old, t_tree *tree)
     }
   else
     {
-      length = -1;
       while (old->next[++length]);
       if ((next = malloc(sizeof(t_tree*) * (length + 2))) == NULL)
 	return (1);
@@ -55,7 +53,7 @@ int	add_in_tree(t_tree *old, t_tree *tree)
   return (0);
 }
 
-int	add_in_layer(t_pos pos, t_layer **new_layer, t_layer *old)
+static int	add_in_layer(t_pos pos, t_layer **new_layer, t_layer *old)
 {
   t_tree	*tree;
   t_layer	*layer;
@@ -73,7 +71,7 @@ int	add_in_layer(t_pos pos, t_layer **new_layer, t_layer *old)
 	tmp = tmp->next;
       tmp->next = layer;
     }
-  if (add_in_tree(old->node, tree))
+  if (add_in_tree(old->node, tree, -1))
     return (1);
   layer->node = tree;
   tree->pos = pos;
@@ -82,7 +80,7 @@ int	add_in_layer(t_pos pos, t_layer **new_layer, t_layer *old)
   return (0);
 }
 
-int	explore_node(t_layer *layer, t_layer **new_layer, char **map)
+static int	explore_node(t_layer *layer, t_layer **new_layer, char **map)
 {
   int	i;
   t_pos	exp[4];
@@ -99,40 +97,6 @@ int	explore_node(t_layer *layer, t_layer **new_layer, char **map)
 	    return (1);
 	}
     }
-  return (0);
-}
-
-void	free_layer(t_layer *layer)
-{
-  t_layer	*tmp;
-
-  while (layer != NULL)
-    {
-      tmp = layer;
-      layer = layer->next;
-      free(tmp);
-    }
-}
-
-int	finish_him(char **map, t_tree *tree, t_layer *layer)
-{
-  int	x;
-  int	y;
-
-  y = -1;
-  while (map[++y])
-    {
-      x = -1;
-      while (map[y][++x])
-	if (map[y][x] == 'o')
-	  map[y][x] = '*';
-    }
-  while (tree)
-    {
-      map[tree->pos.y][tree->pos.x] = 'o';
-      tree = tree->previous;
-    }
-  free_layer(layer);
   return (0);
 }
 

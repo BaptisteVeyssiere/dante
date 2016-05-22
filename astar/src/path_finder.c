@@ -5,41 +5,14 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 19:25:19 2016 Nathan Scutari
-** Last update Wed May 18 17:31:46 2016 Nathan Scutari
+** Last update Sun May 22 19:50:01 2016 Nathan Scutari
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include "dante.h"
 
-void		remove_from_list(t_node **list, t_node *elem, t_node **close)
-{
-  t_node	*previous;
-  t_node	*open;
-
-  previous = NULL;
-  open = *list;
-  while (open != NULL)
-    {
-      if (open == elem)
-	{
-	  if (!previous)
-	    *list = open->next;
-	  else
-	    previous->next = open->next;
-	  if ((*close))
-	    open->next = *close;
-	  else
-	    open->next = NULL;
-	  *close = open;
-	  return ;
-	}
-      previous = open;
-      open = open->next;
-    }
-}
-
-t_node	*chose_current(t_node **list, char **map, t_node **close)
+static t_node	*chose_current(t_node **list, char **map, t_node **close)
 {
   int		min;
   t_node	*open;
@@ -62,19 +35,7 @@ t_node	*chose_current(t_node **list, char **map, t_node **close)
   return (shorter);
 }
 
-void	prep_pos(t_pos *pos)
-{
-  pos[0].x = 1;
-  pos[0].y = 0;
-  pos[1].x = 0;
-  pos[1].y = 1;
-  pos[2].x = 0;
-  pos[2].y = -1;
-  pos[3].x = -1;
-  pos[3].y = 0;
-}
-
-t_node	*in_the_list(t_node *list, int x, int y)
+static t_node	*in_the_list(t_node *list, int x, int y)
 {
   while (list != NULL)
     {
@@ -85,7 +46,7 @@ t_node	*in_the_list(t_node *list, int x, int y)
   return (NULL);
 }
 
-void	compare_value(t_node *current, t_node *compare)
+static void	compare_value(t_node *current, t_node *compare)
 {
   int	new_value;
 
@@ -98,36 +59,7 @@ void	compare_value(t_node *current, t_node *compare)
     }
 }
 
-int	add_to_list(t_node **open, t_node *current, t_pos *pos)
-{
-  t_node	*elem;
-
-  if ((elem = malloc(sizeof(t_node))) == NULL)
-    return (1);
-  elem->next = *open;
-  *open = elem;
-  elem->pos.x = pos[0].x;
-  elem->pos.y = pos[0].y;
-  elem->previous = current;
-  elem->dist_to_start = current->dist_to_start + 1;
-  elem->dist_to_end = pos[1].x - pos[0].x + pos[1].y - pos[0].y;
-  elem->value = elem->dist_to_end + elem->dist_to_start;
-  return (0);
-}
-
-void	free_list(t_node *list)
-{
-  t_node *tmp;
-
-  while (list)
-    {
-      tmp = list;
-      list = list->next;
-      free(tmp);
-    }
-}
-
-int		way_back(t_node *list, char **map, t_node *close)
+static int		way_back(t_node *list, char **map, t_node *close)
 {
   int		x;
   int		y;
@@ -177,5 +109,6 @@ int	path_finder(t_node *open, char **map, t_pos *pos, t_node *close)
 	      return (way_back(open, map, close));
 	  }
     }
-  return (perr("Could not find a path\n"));
+  write(1, "No solution found\n", 18);
+  return (1);
 }

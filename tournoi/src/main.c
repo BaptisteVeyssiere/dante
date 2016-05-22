@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:26:00 2016 Nathan Scutari
-** Last update Wed May 18 17:48:00 2016 Nathan Scutari
+** Last update Sun May 22 19:39:03 2016 Nathan Scutari
 */
 
 #include <sys/stat.h>
@@ -29,62 +29,10 @@ void	print_map(char **map)
     }
 }
 
-t_tree	*prep_tree(void)
+void	free_tree_map(t_tree *tree, char **map)
 {
-  t_tree	*tree;
-
-  if ((tree = malloc(sizeof(t_tree))) == NULL)
-    return (NULL);
-  tree->pos.x = 0;
-  tree->pos.y = 0;
-  tree->next = NULL;
-  tree->previous = NULL;
-  return (tree);
-}
-
-t_layer	*prep_layer(t_tree *tree, char **map)
-{
-  t_layer	*layer;
-
-  if ((layer = malloc(sizeof(t_layer))) == NULL)
-    return (NULL);
-  if (map[0][0] != '*')
-    return (NULL);
-  map[0][0] = 'o';
-  layer->node = tree;
-  layer->next = NULL;
-  return (layer);
-}
-
-void	print_tree(t_tree *tree)
-{
-  int	i;
-
-  i = -1;
-  while (tree->next && tree->next[++i])
-    print_tree(tree->next[i]);
-}
-
-void	free_tree(t_tree *tree)
-{
-  int	i;
-
-  i = -1;
-  while (tree->next && tree->next[++i])
-    free_tree(tree->next[i]);
-  if (tree->next)
-    free(tree->next);
-  free(tree);
-}
-
-void	free_map(char **map)
-{
-  int	x;
-
-  x = -1;
-  while (map[++x])
-    free(map[x]);
-  free(map);
+  free_tree(tree);
+  free_map(map);
 }
 
 int	prof_solver(char *file_name)
@@ -105,10 +53,13 @@ int	prof_solver(char *file_name)
       (layer = prep_layer(tree, map)) == NULL)
     return (1);
   if (path_finder(tree, layer, &pos, map))
-    return (perr("Can not find a path\n"));
+    {
+      write(1, "No solution found\n", 18);
+      free_tree_map(tree ,map);
+      return (0);
+    }
   print_map(map);
-  free_tree(tree);
-  free_map(map);
+  free_tree_map(tree, map);
   return (0);
 }
 

@@ -5,7 +5,7 @@
 ## Login   <scutar_n@epitech.net>
 ## 
 ## Started on  Mon May 16 18:09:02 2016 Nathan Scutari
-## Last update Tue May 17 16:00:35 2016 Nathan Scutari
+## Last update Sun May 22 18:57:59 2016 Nathan Scutari
 ##
 
 NAME	= solver
@@ -15,6 +15,7 @@ SRCS	= src/main.c \
 	  src/get_map.c \
 	  src/error.c \
 	  src/path_finder.c \
+	  src/list_management.c \
 	  src/tools.c
 
 OBJS	= $(SRCS:.c=.o)
