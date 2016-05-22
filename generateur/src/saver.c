@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Apr 27 16:58:41 2016 Baptiste veyssiere
-** Last update Tue May 17 16:12:36 2016 Baptiste veyssiere
+** Last update Sun May 22 17:50:03 2016 Baptiste veyssiere
 */
 
 #include <unistd.h>
@@ -32,7 +32,7 @@ int		saver(t_cell ***maze)
       while (maze[i][++j + 1] != NULL)
 	if (write(fd, &(maze[i][j]->wall), 1) == -1)
 	  return (-1);
-      if (maze[i + 1] != NULL && write(fd, "\n", 1) == -1)
+      if (maze[i + 2] != NULL && write(fd, "\n", 1) == -1)
 	return (-1);
     }
   if (close(fd) == -1)
