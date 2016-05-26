@@ -1,11 +1,11 @@
 ##
 ## Makefile for solver in /home/scutar_n/rendu/dante/profondeur
-## 
+##
 ## Made by Nathan Scutari
 ## Login   <scutar_n@epitech.net>
-## 
+##
 ## Started on  Mon May 16 18:09:02 2016 Nathan Scutari
-## Last update Sun May 22 19:30:58 2016 Nathan Scutari
+## Last update Sun May 22 19:01:28 2016 Baptiste veyssiere
 ##
 
 NAME	= solver
@@ -34,3 +34,5 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+
+re: fclean all

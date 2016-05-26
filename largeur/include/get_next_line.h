@@ -5,14 +5,14 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Jan  5 18:07:00 2016 Baptiste veyssiere
-** Last update Wed May 18 17:49:12 2016 Nathan Scutari
+** Last update Sun May 22 19:01:05 2016 Baptiste veyssiere
 */
 
 #ifndef GET_NEXT_LINE_H_
 # define GET_NEXT_LINE_H_
 
 # ifndef READ_SIZE
-#  define READ_SIZE (500)
+#  define READ_SIZE (1000000)
 # endif /* !READ_SIZE */
 
 char	*get_next_line(const int);
