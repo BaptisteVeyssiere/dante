@@ -5,11 +5,11 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 18:08:24 2016 Nathan Scutari
-** Last update Sun May 22 19:04:57 2016 Nathan Scutari
+** Last update Fri May 27 00:54:03 2016 Baptiste veyssiere
 */
 
-#ifndef DANTE_H_
-# define DANTE_H_
+#ifndef DANTE_P_H_
+# define DANTE_P_H_
 
 typedef struct	s_pos
 {
@@ -39,4 +39,4 @@ int	perr(char *);
 */
 int	path_finder(int, int, t_pos *, char **);
 
-#endif /* !DANTE_H */
+#endif /* !DANTE_P_H_ */

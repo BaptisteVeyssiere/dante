@@ -5,11 +5,11 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 18:08:24 2016 Nathan Scutari
-** Last update Sun May 22 19:33:03 2016 Nathan Scutari
+** Last update Fri May 27 00:55:17 2016 Baptiste veyssiere
 */
 
-#ifndef DANTE_H_
-# define DANTE_H_
+#ifndef DANTE_T_H_
+# define DANTE_T_H_
 
 typedef struct	s_pos
 {
@@ -66,4 +66,4 @@ t_tree	*prep_tree(void);
 void	free_layer(t_layer *);
 int	finish_him(char **, t_tree *, t_layer *);
 
-#endif /* !DANTE_H */
+#endif /* !DANTE_T_H_ */

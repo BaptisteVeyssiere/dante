@@ -5,11 +5,11 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Sun May 22 19:06:11 2016 Nathan Scutari
-** Last update Sun May 22 19:28:41 2016 Nathan Scutari
+** Last update Fri May 27 00:56:05 2016 Baptiste veyssiere
 */
 
 #include <stdlib.h>
-#include "dante.h"
+#include "dante_t.h"
 
 void	free_tree(t_tree *tree)
 {

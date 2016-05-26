@@ -5,12 +5,12 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:53:46 2016 Nathan Scutari
-** Last update Sun May 22 19:04:36 2016 Nathan Scutari
+** Last update Fri May 27 00:54:23 2016 Baptiste veyssiere
 */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "dante.h"
+#include "dante_p.h"
 #include "get_next_line.h"
 
 static char	**realloc_map(char *line, char **map)
