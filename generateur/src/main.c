@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Apr 27 16:11:08 2016 Baptiste veyssiere
-** Last update Fri May 27 01:05:53 2016 Baptiste veyssiere
+** Last update Fri May 27 10:35:15 2016 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -83,13 +83,13 @@ int	main(int ac, char **av)
 
   if (ac < 3 || ac > 4)
     return (my_put_error("./maze width height\n", 1));
-  if (ac == 3 && (error = perfect_maze(av[1], av[2], NULL)))
+  if (ac == 3 && (error = perfect_maze(av[2], av[1], NULL)))
     {
       if (error == -1)
 	return (-1);
       return (0);
     }
-  else if (ac == 4 && (error = perfect_maze(av[1], av[2], av[3])))
+  else if (ac == 4 && (error = perfect_maze(av[2], av[1], av[3])))
     {
       if (error == -1)
 	return (-1);
