@@ -5,11 +5,11 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 18:27:22 2016 Nathan Scutari
-** Last update Fri May 27 00:54:11 2016 Baptiste veyssiere
+** Last update Fri May 27 15:08:47 2016 Baptiste veyssiere
 */
 
 #include <unistd.h>
-#include "dante_p.h"
+#include "dante.h"
 
 int	perr(char *str)
 {

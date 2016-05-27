@@ -5,10 +5,10 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 18:05:09 2016 Nathan Scutari
-** Last update Fri May 27 00:56:11 2016 Baptiste veyssiere
+** Last update Fri May 27 15:11:21 2016 Baptiste veyssiere
 */
 
-#include "dante_t.h"
+#include "dante.h"
 
 int	my_strlen(char *str)
 {

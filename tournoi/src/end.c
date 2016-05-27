@@ -5,11 +5,11 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Sun May 22 19:09:28 2016 Nathan Scutari
-** Last update Fri May 27 00:55:25 2016 Baptiste veyssiere
+** Last update Fri May 27 15:10:30 2016 Baptiste veyssiere
 */
 
 #include <stdlib.h>
-#include "dante_t.h"
+#include "dante.h"
 
 void	free_layer(t_layer *layer)
 {

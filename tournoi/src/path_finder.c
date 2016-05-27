@@ -5,12 +5,12 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Tue May 17 16:34:42 2016 Nathan Scutari
-** Last update Fri May 27 00:55:57 2016 Baptiste veyssiere
+** Last update Fri May 27 15:11:01 2016 Baptiste veyssiere
 */
 
 #include <unistd.h>
 #include <stdlib.h>
-#include "dante_t.h"
+#include "dante.h"
 
 static void	prep_pos(t_pos *pos, int x, int y)
 {

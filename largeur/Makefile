@@ -5,34 +5,54 @@
 ## Login   <scutar_n@epitech.net>
 ##
 ## Started on  Mon May 16 18:09:02 2016 Nathan Scutari
-## Last update Thu May 26 18:12:25 2016 Baptiste veyssiere
+## Last update Fri May 27 15:14:10 2016 Baptiste veyssiere
 ##
 
 NAME	= solver
 
-SRCS	= src/main.c \
+CC	= gcc
+
+RM	= rm -f
+
+MKDIR	= mkdir -p
+
+RMDIR	= rm -rf
+
+SRC	= src/main.c \
 	src/get_next_line.c \
-	src/prep_n_free.c \
 	src/get_map.c \
-	src/end.c \
 	src/error.c \
 	src/path_finder.c \
-	src/tools.c
+	src/prep_n_free.c \
+	src/tools.c \
+	src/end.c
 
-OBJS	= $(SRCS:.c=.o)
+OBJDIR	= obj
+
+SRCDIR	= src
+
+OBJ	= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 CFLAGS	= -W -Wall -Wextra -Werror -ansi -pedantic -Iinclude/
 
+$(NAME): $(OBJ)
+	@$(CC) $(OBJ) -o $(NAME)
+	@echo "Linkage complete!"
 
-$(NAME): $(OBJS)
-	gcc $(OBJS) -o $(NAME)
+$(OBJ): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(MKDIR) $(OBJDIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
 
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	$(RM) $(OBJ)
+	$(RMDIR) $(OBJDIR)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

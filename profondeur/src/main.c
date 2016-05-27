@@ -5,14 +5,14 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:26:00 2016 Nathan Scutari
-** Last update Fri May 27 00:54:29 2016 Baptiste veyssiere
+** Last update Fri May 27 15:09:27 2016 Baptiste veyssiere
 */
 
 #include <sys/stat.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include "dante_p.h"
+#include "dante.h"
 
 void	print_map(char **map)
 {
