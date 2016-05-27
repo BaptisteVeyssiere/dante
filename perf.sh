@@ -10,7 +10,9 @@ neutre='\e[0;m'
 
 if [ $# -gt 0 ]
 then
+    make re > /dev/null
     echo -e "${vertfonce}< Bienvenue dans l'interface de test >\n${neutre}"
+    echo -e "${vertclair}--- Les programmes ont été recompilés ---\n${neutre}"
     let "a = 3"
     while [ $a -gt 0 ]
     do

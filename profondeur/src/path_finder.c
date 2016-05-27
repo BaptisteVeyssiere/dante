@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 19:25:19 2016 Nathan Scutari
-** Last update Fri May 27 15:09:38 2016 Baptiste veyssiere
+** Last update Fri May 27 18:43:24 2016 Nathan Scutari
 */
 
 #include "dante.h"
@@ -22,6 +22,22 @@ static void	prep_pos(t_pos *pos, int x, int y)
   pos[3].y = y;
 }
 
+int	clean_map(char **map)
+{
+  int	y;
+  int	x;
+
+  y = -1;
+  while (map[++y])
+    {
+      x = -1;
+      while (map[++x])
+	if (map[y][x] == 'x')
+	  map[y][x] = '*';
+    }
+  return (0);
+}
+
 int	path_finder(int x, int y, t_pos *pos, char **map)
 {
   int	i;
@@ -29,7 +45,7 @@ int	path_finder(int x, int y, t_pos *pos, char **map)
 
   map[y][x] = 'o';
   if (pos->x == x && pos->y == y)
-    return (0);
+    return (clean_map(map));
   prep_pos(n_pos, x, y);
   i = -1;
   while (++i < 4)
@@ -41,6 +57,6 @@ int	path_finder(int x, int y, t_pos *pos, char **map)
 	    return (0);
 	}
     }
-  map[y][x] = '*';
+  map[y][x] = 'x';
   return (1);
 }
