@@ -5,9 +5,11 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 18:05:09 2016 Nathan Scutari
-** Last update Fri May 27 15:08:12 2016 Baptiste veyssiere
+** Last update Fri May 27 16:56:24 2016 Baptiste veyssiere
 */
 
+#include <unistd.h>
+#include <stdlib.h>
 #include "dante.h"
 
 int	my_strlen(char *str)
@@ -30,4 +32,10 @@ int	my_wordtablen(char **wordtab)
     return (0);
   while (wordtab[++i]);
   return (i);
+}
+
+char	*free_line(char *line)
+{
+  free(line);
+  return (NULL);
 }

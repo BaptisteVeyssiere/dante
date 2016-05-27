@@ -5,10 +5,18 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 18:05:09 2016 Nathan Scutari
-** Last update Fri May 27 15:11:21 2016 Baptiste veyssiere
+** Last update Fri May 27 16:58:34 2016 Baptiste veyssiere
 */
 
+#include <stdlib.h>
+#include <unistd.h>
 #include "dante.h"
+
+char	*free_line(char *line)
+{
+  free(line);
+  return (NULL);
+}
 
 int	my_strlen(char *str)
 {

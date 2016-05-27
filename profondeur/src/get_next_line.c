@@ -5,12 +5,13 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Mon Jan 11 16:30:41 2016 Baptiste veyssiere
-** Last update Sun Apr 10 02:40:08 2016 Baptiste veyssiere
+** Last update Fri May 27 16:52:53 2016 Baptiste veyssiere
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include "get_next_line.h"
+#include "dante.h"
 
 void	read_loop_bis(int *j, int *end, char *reader)
 {
@@ -84,7 +85,7 @@ char	*read_loop(char *line, int fd, int line_index, char *buffer)
 	reader[j] = 0;
       end = (read(fd, reader, READ_SIZE) < READ_SIZE) ? (1) : (0);
       if ((i = -1) == -1 && end == 1 && reader[0] == 0 && line[0] == 0)
-        return (NULL);
+	return (free_line(line));
       while (++i < READ_SIZE && reader[i] != '\n' && reader[i] != 0)
 	line[++line_index] = reader[i];
       if ((j = -1) == -1 && end == 0 && reader[i] == 0)

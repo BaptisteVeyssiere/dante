@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 18:08:24 2016 Nathan Scutari
-** Last update Sun May 22 19:02:48 2016 Nathan Scutari
+** Last update Fri May 27 16:54:56 2016 Baptiste veyssiere
 */
 
 #ifndef DANTE_H_
@@ -37,6 +37,7 @@ int	my_strlen(char *);
 int	my_wordtablen(char **);
 void	prep_pos(t_pos *);
 void	remove_from_list(t_node **, t_node *, t_node **);
+char	*free_line(char*);
 
 /*
 ** list_management.c

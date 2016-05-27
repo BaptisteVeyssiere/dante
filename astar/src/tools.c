@@ -5,11 +5,18 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 18:05:09 2016 Nathan Scutari
-** Last update Sun May 22 18:59:40 2016 Nathan Scutari
+** Last update Fri May 27 16:56:10 2016 Baptiste veyssiere
 */
 
+#include <unistd.h>
 #include <stdlib.h>
 #include "dante.h"
+
+char	*free_line(char *line)
+{
+  free(line);
+  return (NULL);
+}
 
 void	prep_pos(t_pos *pos)
 {
