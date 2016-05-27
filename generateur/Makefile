@@ -1,40 +1,59 @@
 ##
-## Makefile for perfect_maze in /home/VEYSSI_B/rendu/Initiation_IA/test
+## Makefile for solver in /home/scutar_n/rendu/dante/profondeur
 ##
-## Made by Baptiste veyssiere
-## Login   <VEYSSI_B@epitech.net>
+## Made by Nathan Scutari
+## Login   <scutar_n@epitech.net>
 ##
-## Started on  Wed Apr 27 16:13:50 2016 Baptiste veyssiere
-## Last update Sun May 22 19:14:35 2016 Baptiste veyssiere
+## Started on  Mon May 16 18:09:02 2016 Nathan Scutari
+## Last update Fri May 27 15:57:47 2016 Baptiste veyssiere
 ##
 
 NAME	= generateur
 
-SRCS	= src/tools.c \
+CC	= gcc
+
+RM	= rm -f
+
+MKDIR	= mkdir -p
+
+RMDIR	= rm -rf
+
+SRC	= src/tools.c \
 	src/main.c \
 	src/perfect_maze_generator_init.c \
 	src/perfect_maze_generator.c \
 	src/check_nbr_of_way.c \
-	src/free_maze.c	\
+	src/free_maze.c \
 	src/saver.c
 
-OBJS	= $(SRCS:.c=.o)
+OBJDIR	= obj
 
-RM	= rm -f
+SRCDIR	= src
 
-CC	= gcc
+OBJ	= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
-CFLAGS	= -W -Wall -Wextra -Werror -ansi -pedantic -I./include
+CFLAGS	= -W -Wall -Wextra -Werror -ansi -pedantic -Iinclude/
 
-$(NAME): $(OBJS)
-	$(CC) -o $(NAME) $(OBJS)
+$(NAME): $(OBJ)
+	@$(CC) $(OBJ) -o $(NAME)
+	@echo "Linkage complete!"
+
+$(OBJ): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@$(MKDIR) $(OBJDIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJ)
+	@$(RMDIR) $(OBJDIR)
+	@echo "Cleanup Complete"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo $(NAME)" erased!"
 
 re: fclean all
+
+.PHONY: all clean fclean re

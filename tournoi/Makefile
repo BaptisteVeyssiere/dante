@@ -5,7 +5,7 @@
 ## Login   <scutar_n@epitech.net>
 ##
 ## Started on  Mon May 16 18:09:02 2016 Nathan Scutari
-## Last update Fri May 27 15:16:17 2016 Baptiste veyssiere
+## Last update Fri May 27 16:01:21 2016 Baptiste veyssiere
 ##
 
 NAME	= solver
@@ -47,11 +47,13 @@ $(OBJ): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJ)
-	$(RMDIR) $(OBJDIR)
+	@$(RM) $(OBJ)
+	@$(RMDIR) $(OBJDIR)
+	@echo "Cleanup complete!"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo $(NAME)" erased!"
 
 re: fclean all
 
