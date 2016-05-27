@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 19:25:19 2016 Nathan Scutari
-** Last update Sun May 22 19:50:01 2016 Nathan Scutari
+** Last update Fri May 27 18:53:24 2016 Nathan Scutari
 */
 
 #include <unistd.h>
@@ -23,7 +23,7 @@ static t_node	*chose_current(t_node **list, char **map, t_node **close)
   min = open->value;
   while (open != NULL)
     {
-      if (open->value < min)
+      if (open->value <= min)
 	{
 	  min = open->value;
 	  shorter = open;
