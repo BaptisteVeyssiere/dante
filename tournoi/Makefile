@@ -5,12 +5,12 @@
 ## Login   <scutar_n@epitech.net>
 ##
 ## Started on  Mon May 16 18:09:02 2016 Nathan Scutari
-## Last update Fri May 27 16:01:21 2016 Baptiste veyssiere
+## Last update Fri May 27 16:44:38 2016 Baptiste veyssiere
 ##
 
 NAME	= solver
 
-CC	= gcc
+CC	= gcc -g
 
 RM	= rm -f
 
@@ -23,9 +23,7 @@ SRC	= src/main.c \
 	src/get_map.c \
 	src/error.c \
 	src/path_finder.c \
-	src/prep_n_free.c \
-	src/tools.c \
-	src/end.c
+	src/tools.c
 
 OBJDIR	= obj
 

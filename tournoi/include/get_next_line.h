@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Jan  5 18:07:00 2016 Baptiste veyssiere
-** Last update Wed May 18 17:49:12 2016 Nathan Scutari
+** Last update Wed May 18 17:43:27 2016 Nathan Scutari
 */
 
 #ifndef GET_NEXT_LINE_H_
