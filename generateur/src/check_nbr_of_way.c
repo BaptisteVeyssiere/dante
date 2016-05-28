@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Fri Apr 29 13:37:48 2016 Baptiste veyssiere
-** Last update Fri Apr 29 14:40:56 2016 Baptiste veyssiere
+** Last update Sat May 28 18:31:37 2016 Baptiste veyssiere
 */
 
 #include <unistd.h>
@@ -24,55 +24,55 @@ t_list		*choose_random_cell(t_list *list, int list_size)
   return (list);
 }
 
-void	zero_superior(t_list *cell, t_cell ***maze,
-		      t_dimension *dimension, int *counter)
+static void	zero_superior(t_list *cell, t_cell **maze,
+			      t_dimension *dimension, int *counter)
 {
-  if (cell->x > 0 && maze[cell->x - 1][cell->y]->wall == '*')
+  if (cell->x > 0 && maze[cell->x - 1][cell->y].wall == '*')
     {
       ++(*counter);
-      if (cell->y > 0 && maze[cell->x + 1][cell->y - 1]->wall == '*')
+      if (cell->y > 0 && maze[cell->x + 1][cell->y - 1].wall == '*')
 	++(*counter);
       if (cell->y < (dimension->height - 1) &&
-	  maze[cell->x + 1][cell->y + 1]->wall == '*')
+	  maze[cell->x + 1][cell->y + 1].wall == '*')
 	++(*counter);
     }
-  if (cell->y > 0 && maze[cell->x][cell->y - 1]->wall == '*')
+  if (cell->y > 0 && maze[cell->x][cell->y - 1].wall == '*')
     {
       ++(*counter);
-      if (cell->x > 0 && maze[cell->x - 1][cell->y + 1]->wall == '*')
+      if (cell->x > 0 && maze[cell->x - 1][cell->y + 1].wall == '*')
         ++(*counter);
       if (cell->x < (dimension->width - 1) &&
-	  maze[cell->x + 1][cell->y + 1]->wall == '*')
+	  maze[cell->x + 1][cell->y + 1].wall == '*')
         ++(*counter);
     }
 }
 
-void	limit_inferior(t_list *cell, t_cell ***maze,
-		       t_dimension *dimension, int *counter)
+static void	limit_inferior(t_list *cell, t_cell **maze,
+			       t_dimension *dimension, int *counter)
 {
   if (cell->y < (dimension->height - 1) &&
-      maze[cell->x][cell->y + 1]->wall == '*')
+      maze[cell->x][cell->y + 1].wall == '*')
     {
       ++(*counter);
-      if (cell->x > 0 && maze[cell->x - 1][cell->y - 1]->wall == '*')
+      if (cell->x > 0 && maze[cell->x - 1][cell->y - 1].wall == '*')
 	++(*counter);
       if (cell->x < (dimension->width - 1) &&
-	  maze[cell->x + 1][cell->y - 1]->wall == '*')
+	  maze[cell->x + 1][cell->y - 1].wall == '*')
 	++(*counter);
     }
   if (cell->x < (dimension->width - 1) &&
-      maze[cell->x + 1][cell->y]->wall == '*')
+      maze[cell->x + 1][cell->y].wall == '*')
     {
       ++(*counter);
-      if (cell->y > 0 && maze[cell->x -1][cell->y - 1]->wall == '*')
+      if (cell->y > 0 && maze[cell->x - 1][cell->y - 1].wall == '*')
 	++(*counter);
-      if (cell->y < (dimension->height - 1) &&
-	  maze[cell->x - 1][cell->y + 1]->wall == '*')
+      if (cell->y < (dimension->height + 1) &&
+	  maze[cell->x - 1][cell->y + 1].wall == '*')
 	++(*counter);
     }
 }
 
-int	check_nbr_of_way(t_list *cell, t_cell ***maze, t_dimension *dimension)
+int	check_nbr_of_way(t_list *cell, t_cell **maze, t_dimension *dimension)
 {
   int	counter;
 

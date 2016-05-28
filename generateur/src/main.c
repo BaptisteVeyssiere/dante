@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Apr 27 16:11:08 2016 Baptiste veyssiere
-** Last update Fri May 27 10:35:15 2016 Baptiste veyssiere
+** Last update Sat May 28 16:46:00 2016 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -62,9 +62,9 @@ int		perfect_maze(char *width, char *height, char *perfect)
     return (my_put_error("Invalid height\n", 1));
   dimension->width = atoi(width) + 2;
   dimension->height = atoi(height) + 2;
-  if (dimension->width < 1)
+  if (dimension->width < 3)
     return (my_put_error("Invalid negative width\n", 1));
-  if (dimension->height < 1)
+  if (dimension->height < 3)
     return (my_put_error("Invalid negative height\n", 1));
   if (perfect != NULL && !my_strcmp(perfect, "parfait"))
     return (my_put_error("Invalid third argument\n", 1));
@@ -86,13 +86,13 @@ int	main(int ac, char **av)
   if (ac == 3 && (error = perfect_maze(av[2], av[1], NULL)))
     {
       if (error == -1)
-	return (-1);
+	return (1);
       return (0);
     }
   else if (ac == 4 && (error = perfect_maze(av[2], av[1], av[3])))
     {
       if (error == -1)
-	return (-1);
+	return (1);
       return (0);
     }
   return (0);

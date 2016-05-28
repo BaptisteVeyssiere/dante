@@ -5,25 +5,19 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Apr 27 20:17:37 2016 Baptiste veyssiere
-** Last update Wed Apr 27 20:25:02 2016 Baptiste veyssiere
+** Last update Sat May 28 16:58:52 2016 Baptiste veyssiere
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include "perfect_maze.h"
 
-void	free_maze(t_cell ***maze)
+void	free_maze(t_cell **maze)
 {
   int	i;
-  int	j;
 
   i = -1;
   while (maze[++i] != NULL)
-    {
-      j = -1;
-      while (maze[i][++j] != NULL)
-	free(maze[i][j]);
-      free(maze[i]);
-    }
+    free(maze[i]);
   free(maze);
 }
