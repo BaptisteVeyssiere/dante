@@ -5,8 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:26:00 2016 Nathan Scutari
-** Last update Sun May 29 18:01:06 2016 Nathan Scutari
-** Last update Sun May 29 14:39:09 2016 Baptiste veyssiere
+** Last update Sun May 29 22:28:45 2016 Baptiste veyssiere
 */
 
 #include <sys/stat.h>

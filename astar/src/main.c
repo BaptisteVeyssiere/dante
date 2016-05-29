@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:26:00 2016 Nathan Scutari
-** Last update Sun May 22 17:51:58 2016 Baptiste veyssiere
+** Last update Sun May 29 21:19:20 2016 Baptiste veyssiere
 */
 
 
@@ -34,14 +34,13 @@ t_node	*prep_node(int x, int y)
 void	print_map(char **map)
 {
   int	y;
-  int	x;
+  int	length;
 
   y = -1;
+  length = my_strlen(map[0]);
   while (map[++y])
     {
-      x = -1;
-      while (map[y][++x])
-	write(1, &map[y][x], 1);
+      write(1, map[y], length);
       write(1, "\n", 1);
     }
 }

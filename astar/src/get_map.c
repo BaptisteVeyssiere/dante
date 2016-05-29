@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:53:46 2016 Nathan Scutari
-** Last update Sun May 29 14:29:34 2016 Baptiste veyssiere
+** Last update Sun May 29 22:26:12 2016 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -49,7 +49,8 @@ static int	verify_map(char	**map)
 	if (map[i][x] != 'X' && map[i][x] != '*')
 	  return (1);
     }
-  if (map[i - 1][length - 1] == 'X' || map[0][0] == 'X')
+  if (map[i - 1][length - 1] == 'X' || map[0][0] == 'X' ||
+      my_strlen(map[0]) == 1000)
     return (1);
   return (0);
 }

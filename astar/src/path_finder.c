@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 19:25:19 2016 Nathan Scutari
-** Last update Fri May 27 18:53:24 2016 Nathan Scutari
+** Last update Sun May 29 21:21:50 2016 Baptiste veyssiere
 */
 
 #include <unistd.h>
@@ -92,8 +92,9 @@ int	path_finder(t_node *open, char **map, t_pos *pos, t_node *close)
   t_node	*current;
 
   prep_pos(n_pos);
-  while (open != NULL && (i = -1))
+  while (open != NULL)
     {
+      i = -1;
       current = chose_current(&open, map, &close);
       while (++i < 4)
 	if (POSX >= 0 && POSY >= 0 && map[POSY] && map[POSY][POSX] == '*')
@@ -102,9 +103,8 @@ int	path_finder(t_node *open, char **map, t_pos *pos, t_node *close)
 	    pos[0].y = POSY;
 	    if ((compare = in_the_list(open, POSX, POSY)))
 	      compare_value(current, compare);
-	    else
-	      if (add_to_list(&open, current, pos))
-		return (1);
+	    else if (add_to_list(&open, current, pos))
+	      return (1);
 	    if (POSX == pos[1].x && POSY == pos[1].y)
 	      return (way_back(open, map, close));
 	  }

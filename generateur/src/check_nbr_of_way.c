@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Fri Apr 29 13:37:48 2016 Baptiste veyssiere
-** Last update Sat May 28 18:31:37 2016 Baptiste veyssiere
+** Last update Sun May 29 17:29:14 2016 Baptiste veyssiere
 */
 
 #include <unistd.h>
@@ -21,6 +21,7 @@ t_list		*choose_random_cell(t_list *list, int list_size)
   i = -1;
   while (++i < random)
     list = list->next;
+  list_size = list_size;
   return (list);
 }
 
