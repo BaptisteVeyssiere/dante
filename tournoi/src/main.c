@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:26:00 2016 Nathan Scutari
-** Last update Fri May 27 18:43:06 2016 Nathan Scutari
+** Last update Sun May 29 14:07:00 2016 Nathan Scutari
 */
 
 #include <sys/stat.h>
@@ -41,6 +41,7 @@ void	free_wordtab(char **map)
 
 int	prof_solver(char *file_name)
 {
+  int	ret;
   t_pos	pos;
   char	**map;
   int	fd;
@@ -51,10 +52,13 @@ int	prof_solver(char *file_name)
     return (perr("The map is incorrect\n"));
   pos.x = my_strlen(map[0]) - 1;
   pos.y = my_wordtablen(map) - 1;
-  if (path_finder(0, 0, &pos, map))
+  if ((ret = path_finder(0, 0, &pos, map)))
     {
       free_wordtab(map);
-      write(1, "No solution found\n", 18);
+      if (ret == 1)
+	write(1, "No solution found\n", 18);
+      else if (ret == 2)
+	write(2, "The program is quitting to prevent stack overflow\n", 50);
       return (0);
     }
   print_map(map);

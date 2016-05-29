@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Tue May 17 16:34:42 2016 Nathan Scutari
-** Last update Sun May 29 14:03:40 2016 Nathan Scutari
+** Last update Sun May 29 17:58:30 2016 Nathan Scutari
 */
 
 #include <unistd.h>
@@ -104,9 +104,13 @@ int	path_finder(t_tree *tree, t_layer *layer,
 {
   t_layer	*save;
   t_layer	*n_layer;
+  static int	stack = 0;
+  int		ret;
 
   n_layer = NULL;
   save = layer;
+  if (++stack >= 85000)
+    return (2);
   while (layer != NULL)
     {
       if (layer->node->pos.x == end->x && layer->node->pos.y == end->y)
@@ -116,9 +120,9 @@ int	path_finder(t_tree *tree, t_layer *layer,
       layer = layer->next;
     }
   if (n_layer == NULL)
-    return (2);
-  free_layer(save);
-  if  (path_finder(tree, n_layer, end, map))
     return (1);
+  free_layer(save);
+  if ((ret = path_finder(tree, n_layer, end, map)))
+    return (ret);
   return (0);
 }
