@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Apr 27 16:18:16 2016 Baptiste veyssiere
-** Last update Tue May 17 15:46:06 2016 Baptiste veyssiere
+** Last update Sat May 28 18:01:23 2016 Baptiste veyssiere
 */
 
 #include <unistd.h>
@@ -15,6 +15,8 @@ int	my_strlen(char *s)
   int	i;
 
   i = -1;
+  if (!s)
+    return (0);
   while (s[++i]);
   return (i);
 }

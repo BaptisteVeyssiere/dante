@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Apr 27 16:16:59 2016 Baptiste veyssiere
-** Last update Tue May 17 15:47:38 2016 Baptiste veyssiere
+** Last update Sat May 28 18:24:28 2016 Baptiste veyssiere
 */
 
 #ifndef PERFECT_MAZE_H_
@@ -45,23 +45,23 @@ int	perfect_maze_generator(t_dimension*, char);
 /*
 ** check_nbr_of_way.c
 */
-int	check_nbr_of_way(t_list*, t_cell***, t_dimension*);
+int	check_nbr_of_way(t_list*, t_cell**, t_dimension*);
 int	get_list_size(t_list*);
 t_list	*choose_random_cell(t_list*, int);
 
 /*
 ** perfect_maze_generator.c
 */
-int	generator(t_cell***, t_dimension*);
+int	generator(t_cell**, t_dimension*);
 
 /*
 ** free_tab.c
 */
-void	free_maze(t_cell***);
+void	free_maze(t_cell**);
 
 /*
 ** saver.c
 */
-int	saver(t_cell***);
+int	saver(t_cell**, t_dimension*);
 
 #endif /* !PERFECT_MAZE_H_ */

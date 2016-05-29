@@ -5,12 +5,12 @@
 ## Login   <scutar_n@epitech.net>
 ##
 ## Started on  Mon May 16 18:09:02 2016 Nathan Scutari
-## Last update Fri May 27 16:44:38 2016 Baptiste veyssiere
+## Last update Sat May 28 04:05:48 2016 Baptiste veyssiere
 ##
 
 NAME	= solver
 
-CC	= gcc -g
+CC	= gcc
 
 RM	= rm -f
 
