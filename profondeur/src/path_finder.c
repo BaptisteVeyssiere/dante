@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 19:25:19 2016 Nathan Scutari
-** Last update Fri May 27 18:43:24 2016 Nathan Scutari
+** Last update Sun May 29 14:04:41 2016 Nathan Scutari
 */
 
 #include "dante.h"
@@ -38,12 +38,16 @@ int	clean_map(char **map)
   return (0);
 }
 
-int	path_finder(int x, int y, t_pos *pos, char **map)
+int		path_finder(int x, int y, t_pos *pos, char **map)
 {
-  int	i;
-  t_pos	n_pos[4];
+  int		i;
+  int		ret;
+  t_pos		n_pos[4];
+  static int	stack = 0;
 
   map[y][x] = 'o';
+  if (++stack >= 85000)
+    return (2);
   if (pos->x == x && pos->y == y)
     return (clean_map(map));
   prep_pos(n_pos, x, y);
@@ -52,11 +56,10 @@ int	path_finder(int x, int y, t_pos *pos, char **map)
     {
       if (n_pos[i].x >= 0 && n_pos[i].y >= 0 && map[n_pos[i].y] &&
 	  map[n_pos[i].y][n_pos[i].x] == '*')
-	{
-	  if (path_finder(n_pos[i].x, n_pos[i].y, pos, map) == 0)
-	    return (0);
-	}
+	if ((ret = path_finder(n_pos[i].x, n_pos[i].y, pos, map)) != 1)
+	  return (ret);
     }
   map[y][x] = 'x';
+  --stack;
   return (1);
 }
