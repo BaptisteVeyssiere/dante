@@ -5,7 +5,7 @@
 ** Login   <scutar_n@epitech.net>
 **
 ** Started on  Mon May 16 17:26:00 2016 Nathan Scutari
-** Last update Fri May 27 15:06:58 2016 Baptiste veyssiere
+** Last update Sun May 29 14:38:20 2016 Baptiste veyssiere
 */
 
 #include <sys/stat.h>
@@ -46,7 +46,7 @@ int	prof_solver(char *file_name)
   if ((fd = open(file_name, O_RDONLY)) == -1)
     return (perr("Error while trying to open the file\n"));
   if ((map = get_map(fd)) == 0)
-    return (perr("The map is incorrect\n"));
+    return (perr("No solution found\n"));
   pos.x = my_strlen(map[0]) - 1;
   pos.y = my_wordtablen(map) - 1;
   if ((tree = prep_tree()) == NULL ||
