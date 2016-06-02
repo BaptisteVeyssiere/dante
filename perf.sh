@@ -54,7 +54,7 @@ then
 	    let "time_first = time_first_end - time_first_start"
 	    let "s_first = time_first / 1000"
 	    let "ms_first = time_first - 1000 * s_first"
-	    echo -e "Voici les résultats de l'algo profondeur:\n${vertclair}$s_first s and $ms_first ms${neutre}\n"
+	    echo -e "Voici les résultats de l'algo profondeur:\n${vertclair}$s_first s et $ms_first ms${neutre}\n"
 	else
 	    echo -e "${rougeclair}L'algo profondeur a timeout après 10s\n${neutre}"
 	fi
@@ -63,7 +63,7 @@ then
 	    let "time_second = time_second_end - time_second_start"
 	    let "s_second = time_second / 1000"
 	    let "ms_second = time_second - 1000 * s_second"
-	    echo -e "Voici les résultats de l'algo largeur:\n${vertclair}$s_second s and $ms_second ms${neutre}\n"
+	    echo -e "Voici les résultats de l'algo largeur:\n${vertclair}$s_second s et $ms_second ms${neutre}\n"
 	else
             echo -e "${rougeclair}L'algo largeur a timeout après 10s\n${neutre}"
 	fi
@@ -72,7 +72,7 @@ then
 	    let "time_third = time_third_end - time_third_start"
 	    let "s_third = time_third / 1000"
 	    let "ms_third = time_third - 1000 * s_third"
-	    echo -e "Voici les résultats du Astar:\n${vertclair}$s_third s and $ms_third ms${neutre}\n"
+	    echo -e "Voici les résultats du Astar:\n${vertclair}$s_third s et $ms_third ms${neutre}\n"
 	else
             echo -e "${rougeclair}L'algo astar a timeout après 10s\n${neutre}"
 	fi
